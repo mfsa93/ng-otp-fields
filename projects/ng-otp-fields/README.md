@@ -1,24 +1,86 @@
 # NgOtpFields
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.13.
+A lightweight and highly customizable Angular OTP component.
 
-## Code scaffolding
+[![Build Status](https://travis-ci.com/mfsa93/ng-otp-fields.svg?branch=master)](https://travis-ci.com/mfsa93/ng-otp-fields)
 
-Run `ng generate component component-name --project ng-otp-fields` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ng-otp-fields`.
-> Note: Don't forget to add `--project ng-otp-fields` or else it will be added to the default project in your `angular.json` file. 
 
-## Build
+## Install
 
-Run `ng build ng-otp-fields` to build the project. The build artifacts will be stored in the `dist/` directory.
+```
+$ npm install --save ng-otp-fields
+```
 
-## Publishing
+## Usage
 
-After building your library with `ng build ng-otp-fields`, go to the dist folder `cd dist/ng-otp-fields` and run `npm publish`.
+```js
+// in app.module.ts
+import { NgOtpFieldsModule } from 'ng-otp-fields';
 
-## Running unit tests
+@NgModule({
+  ...
+  imports: [
+    NgOtpFieldsModule
+  ],
+  ...
+})
+export class AppModule { }
+```
 
-Run `ng test ng-otp-fields` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```html
+<!-- in app.component.html -->
+<ng-otp-fields  (onInputChange)="onOtpChange($event)"  [config]="config"></ng-otp-fields>
+```
 
-## Further help
+```js
+// in app.component.ts
+config: Config = {
+  length:8, 
+  inputClass: 'input', 
+  containerClass: 'input--key',
+  allowNumbersOnly: true, 
+  isPasswordInput: true
+ }
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+onOtpChange(event) {
+  console.log(event);
+}
+
+```
+
+## Component documentation
+
+#### ng-otp-input
+
+This component has the following Input properties:
+
+* `[config]`: Configuration object.
+
+It has the following Output event:
+
+* `(onInputChange)`: Emitted when any input is changed. It returns a `NgxDropzoneChangeEvent` with the properties `source: NgxDropzoneComponent`, `addedFiles: File[]` and `rejectedFiles: RejectedFile[]`.
+
+
+#### Configuration object
+
+```js
+// configuration object
+
+{
+    inputStyles?: {[key: string]: any}; // default empty
+    containerStyles?: {[key: string]: any}; // default empty
+    allowKeyCodes?: string[]; // default empty
+    length: number; // default 4
+    allowNumbersOnly?: boolean; // default false
+    inputClass?: string; // default empty
+    containerClass?: string; // default empty
+    isPasswordInput?: boolean; // default false
+    disableAutoFocus?: boolean; // default false
+    placeholder?: string; // default empty
+}
+
+```
+
+## Licence
+
+MIT ©

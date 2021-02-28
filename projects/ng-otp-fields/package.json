@@ -1,9 +1,15 @@
 {
   "name": "ng-otp-fields",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "peerDependencies": {
     "@angular/common": "^9.1.13",
     "@angular/core": "^9.1.13"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/mfsa93/ng-otp-fields",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mfsa93/ng-otp-fields.git"
   },
   "dependencies": {
     "tslib": "^1.10.0"
