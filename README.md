@@ -44,7 +44,6 @@ config: Config = {
 
 onOtpChange(event) {
   console.log(event);
-  this.files.push(...event.addedFiles);
 }
 
 ```
