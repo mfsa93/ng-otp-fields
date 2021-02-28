@@ -1,27 +1,87 @@
-# NgOtpField
+# NgOtpFields
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.7.
+A lightweight and highly customizable Angular OTP component.
 
-## Development server
+[![Build Status](https://travis-ci.com/mfsa93/ng-otp-fields.svg?branch=master)](https://travis-ci.com/mfsa93/ng-otp-fields)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Install
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
+$ npm install --save ng-otp-fields
+```
 
-## Build
+## Usage
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```js
+// in app.module.ts
+import { NgOtpFieldsModule } from 'ng-otp-fields';
 
-## Running unit tests
+@NgModule({
+  ...
+  imports: [
+    NgOtpFieldsModule
+  ],
+  ...
+})
+export class AppModule { }
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```html
+<!-- in app.component.html -->
+<ng-otp-fields  (onInputChange)="onOtpChange($event)"  [config]="config"></ng-otp-fields>
+```
 
-## Running end-to-end tests
+```js
+// in app.component.ts
+config: Config = {
+  length:8, 
+  inputClass: 'input', 
+  containerClass: 'input--key',
+  allowNumbersOnly: true, 
+  isPasswordInput: true
+ }
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+onOtpChange(event) {
+  console.log(event);
+  this.files.push(...event.addedFiles);
+}
 
-## Further help
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Component documentation
+
+#### ng-otp-input
+
+This component has the following Input properties:
+
+* `[config]`: Configuration object.
+
+It has the following Output event:
+
+* `(onInputChange)`: Emitted when any input is changed. It returns a `NgxDropzoneChangeEvent` with the properties `source: NgxDropzoneComponent`, `addedFiles: File[]` and `rejectedFiles: RejectedFile[]`.
+
+
+#### Configuration object
+
+```js
+// configuration object
+
+{
+    inputStyles?: {[key: string]: any}; // default empty
+    containerStyles?: {[key: string]: any}; // default empty
+    allowKeyCodes?: string[]; // default empty
+    length: number; // default 4
+    allowNumbersOnly?: boolean; // default false
+    inputClass?: string; // default empty
+    containerClass?: string; // default empty
+    isPasswordInput?: boolean; // default false
+    disableAutoFocus?: boolean; // default false
+    placeholder?: string; // default empty
+}
+
+```
+
+## Licence
+
+MIT ©
