@@ -14,7 +14,13 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ng-otp-fields": [
+        "dist/ng-otp-fields/ng-otp-fields",
+        "dist/ng-otp-fields"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
