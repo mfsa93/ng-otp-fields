@@ -58,7 +58,7 @@ This component has the following Input properties:
 
 It has the following Output event:
 
-* `(onInputChange)`: Emitted when any input is changed. It returns a `NgxDropzoneChangeEvent` with the properties `source: NgxDropzoneComponent`, `addedFiles: File[]` and `rejectedFiles: RejectedFile[]`.
+* `(onInputChange)`: Emitted when any input is changed. It returns the value of fields in a string.
 
 
 #### Configuration object
